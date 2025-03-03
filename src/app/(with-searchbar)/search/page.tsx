@@ -8,12 +8,9 @@ export default async function Page({
     q?: string;
   }>;
 }) {
+  const { q } = await searchParams;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${
-      (
-        await searchParams
-      ).q
-    }`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`
   );
   if (!response.ok) {
     return <div>에러 발생 ...</div>;

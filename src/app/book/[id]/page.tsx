@@ -5,8 +5,10 @@ export default async function Page({
 }: {
   params: Promise<{ id: string | string[] }>;
 }) {
+  const { id } = await params;
+
   const result = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`
   );
   if (!result.ok) {
     return <div>에러 발생 ...</div>;
@@ -14,8 +16,7 @@ export default async function Page({
 
   const book = await result.json();
 
-  const { id, coverImgUrl, title, subTitle, author, publisher, description } =
-    book;
+  const { coverImgUrl, title, subTitle, author, publisher, description } = book;
 
   return (
     <div className={style.container}>
