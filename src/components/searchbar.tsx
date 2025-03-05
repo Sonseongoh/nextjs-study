@@ -6,7 +6,7 @@ import style from "./serachbar.module.css";
 
 export default function Searchbar() {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); //쿼리스트링을 꺼내옴
   const [search, setSearch] = useState("");
 
   const q = searchParams.get("q");
