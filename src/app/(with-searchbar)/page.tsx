@@ -4,6 +4,8 @@ import books from "@/mock/books.json";
 import { BookData } from "@/types";
 import { delay } from "@/utils/delay";
 import { Suspense } from "react";
+import BookItemSkeleton from "@/components/skeleton/book-item-skeleton";
+import BookListSkeleton from "@/components/skeleton/book-list-skeleton";
 
 // export const dynamic = "force-dynamic";
 //특정 페이지의 유형을 강제로 static,dynamic페이지로 설정
@@ -60,13 +62,13 @@ export default function Home() {
     <div className={style.container}>
       <section>
         <h3>지금 추천하는 도서</h3>
-        <Suspense fallback={<div>로딩 중 ...</div>}>
+        <Suspense fallback={<BookListSkeleton count={3} />}>
           <RecommendedBooks />
         </Suspense>
       </section>
       <section>
         <h3>등록된 모든 도서</h3>
-        <Suspense fallback={<div>로딩 중 ...</div>}>
+        <Suspense fallback={<BookListSkeleton count={5} />}>
           <AllBooks />
         </Suspense>
       </section>
